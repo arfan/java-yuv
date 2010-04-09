@@ -1,0 +1,24 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+This simple java class can open any yuv 4:2:0 file, and also can write black and white 4:2:0 file.
+
+
+= How to use =
+
+
+{{{
+BufferedImage currentImage;
+        
+ReadYUV ryuv = new ReadYUV(176, 144); //read the qcif yuv
+        
+ryuv.startReading("suzie_qcif.yuv");
+        ryuv.startWriting("test_write_qcif.yuv");
+        while((currentImage=ryuv.nextImage())!=null)
+        {
+            ryuv.writeImage(currentImage);
+        }
+        ryuv.endWriting();
+        ryuv.endReading();
+}}}
