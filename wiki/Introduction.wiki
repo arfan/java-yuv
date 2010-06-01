@@ -12,14 +12,19 @@ this is example source code.
 
 {{{
 BufferedImage currentImage;
-        
+
 ReadYUV ryuv = new ReadYUV(176, 144); //read the qcif yuv
-        
-ryuv.startReading("suzie_qcif.yuv");
-while((currentImage=ryuv.nextImage())!=null)
+ryuv.startReading("akiyo_qcif.yuv");
+
+WriteYUV wyuv = new WriteYUV(176, 144);
+wyuv.startWriting("test_qcif.yuv");
+
+while((currentImage=ryuv.nextImageYOnly())!=null)
 {
-     ryuv.writeImage(currentImage);
+	wyuv.writeImageYOnly(currentImage);
 }
-ryuv.endWriting();
+
+wyuv.endWriting();
 ryuv.endReading();
+
 }}}
